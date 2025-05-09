@@ -33,3 +33,7 @@ build/
 .vscode/
 
 .http/
+
+### Evironment files ###
+.env
+.env.json
