@@ -37,3 +37,4 @@ build/
 ### Evironment files ###
 .env
 .env.json
+cspell.json
