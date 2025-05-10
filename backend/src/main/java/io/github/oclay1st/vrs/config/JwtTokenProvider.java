@@ -96,7 +96,7 @@ public final class JwtTokenProvider {
     public Authentication getAuthentication(String token) {
         UserSecurity userDetails = userSecurityRepository.findByUsername(getIdentity(token))
                 .orElseThrow(() -> new BadCredentialsException("Bad Credentials"));
-        return new UsernamePasswordAuthenticationToken(userDetails, null);
+        return new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
     }
 
 }
