@@ -15,7 +15,6 @@ import java.util.List;
 
 import org.jooq.Condition;
 import org.jooq.Field;
-import org.jooq.JSON;
 import org.jooq.Name;
 import org.jooq.PlainSQL;
 import org.jooq.QueryPart;
@@ -66,12 +65,47 @@ public class Vehicle extends TableImpl<VehicleRecord> {
     /**
      * The column <code>vehicle.type</code>.
      */
-    public final TableField<VehicleRecord, String> TYPE = createField(DSL.name("type"), SQLDataType.VARCHAR(20), this, "");
+    public final TableField<VehicleRecord, String> TYPE = createField(DSL.name("type"), SQLDataType.VARCHAR(20).nullable(false), this, "");
 
     /**
-     * The column <code>vehicle.details</code>.
+     * The column <code>vehicle.diesel_injection_pump_type</code>.
      */
-    public final TableField<VehicleRecord, JSON> DETAILS = createField(DSL.name("details"), SQLDataType.JSON, this, "");
+    public final TableField<VehicleRecord, String> DIESEL_INJECTION_PUMP_TYPE = createField(DSL.name("diesel_injection_pump_type"), SQLDataType.VARCHAR(20), this, "");
+
+    /**
+     * The column <code>vehicle.gas_fuel_types</code>.
+     */
+    public final TableField<VehicleRecord, String> GAS_FUEL_TYPES = createField(DSL.name("gas_fuel_types"), SQLDataType.VARCHAR(20), this, "");
+
+    /**
+     * The column <code>vehicle.battery_type</code>.
+     */
+    public final TableField<VehicleRecord, String> BATTERY_TYPE = createField(DSL.name("battery_type"), SQLDataType.VARCHAR(15), this, "");
+
+    /**
+     * The column <code>vehicle.battery_voltage</code>.
+     */
+    public final TableField<VehicleRecord, Integer> BATTERY_VOLTAGE = createField(DSL.name("battery_voltage"), SQLDataType.INTEGER, this, "");
+
+    /**
+     * The column <code>vehicle.battery_amperage</code>.
+     */
+    public final TableField<VehicleRecord, Integer> BATTERY_AMPERAGE = createField(DSL.name("battery_amperage"), SQLDataType.INTEGER, this, "");
+
+    /**
+     * The column <code>vehicle.convertible</code>.
+     */
+    public final TableField<VehicleRecord, Boolean> CONVERTIBLE = createField(DSL.name("convertible"), SQLDataType.BOOLEAN, this, "");
+
+    /**
+     * The column <code>vehicle.convertible_license_plate</code>.
+     */
+    public final TableField<VehicleRecord, String> CONVERTIBLE_LICENSE_PLATE = createField(DSL.name("convertible_license_plate"), SQLDataType.VARCHAR(30), this, "");
+
+    /**
+     * The column <code>vehicle.convertible_gas_fuel_types</code>.
+     */
+    public final TableField<VehicleRecord, String> CONVERTIBLE_GAS_FUEL_TYPES = createField(DSL.name("convertible_gas_fuel_types"), SQLDataType.VARCHAR(20), this, "");
 
     /**
      * The column <code>vehicle.created_at</code>.
