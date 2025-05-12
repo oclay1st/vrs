@@ -6,6 +6,8 @@ public final class UserConstants {
 
     public static final String ID_PATH = "/{id}";
 
+    public static final String PROFILE_PATH = "/profile";
+
     private UserConstants() {
         throw new IllegalStateException("User Constants");
     }
