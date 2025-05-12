@@ -38,4 +38,20 @@ public final class Utils {
         return object;
     }
 
+    public static Integer parseInteger(String value) {
+        try {
+            return Integer.parseInt(value);
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
+    public static Long parseLong(String value) {
+        try {
+            return Long.parseLong(value);
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
 }
