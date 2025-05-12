@@ -1,6 +1,7 @@
 <script lang="ts">
 import { Badge, Popconfirm, Table, Tooltip } from "ant-design-vue";
 import { useInventoryStore } from "@/stores/inventory";
+import type { ColumnsType } from "ant-design-vue/es/table";
 
 export default {
     components: {
@@ -80,7 +81,7 @@ const columns = [
         align: 'center',
         width: 100
     }
-];
+] as ColumnsType<any>;
 
 const isVehicleModalVisible = ref<boolean>(false);
 

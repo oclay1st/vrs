@@ -44,7 +44,7 @@
     display: flex;
     justify-content: center;
     height: 100vh;
-    background: #F1F5F9 url('@/assets/background.jpg') right top no-repeat;
+    background: #F1F5F9 right top no-repeat;
 }
 
 .login-description {

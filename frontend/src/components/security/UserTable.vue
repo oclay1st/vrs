@@ -1,5 +1,6 @@
 <script lang="ts">
 import { Table, Tooltip } from "ant-design-vue";
+import type { ColumnsType } from "ant-design-vue/es/table";
 
 export default {
     components: {
@@ -58,7 +59,7 @@ const columns = [
         width: 200,
         dataIndex: 'username',
     }
-];
+] as ColumnsType<any>;
 
 function handleTableChange(pagination: any) {
     const newQuery = JSON.parse(JSON.stringify(route.query));
