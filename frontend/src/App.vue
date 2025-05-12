@@ -1,85 +1,83 @@
 <script setup lang="ts">
-import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
+
+import { useRouter } from "vue-router";
+import { ref } from "vue";
+
+
+const router = useRouter();
+
+const preloading = ref<boolean>(true);
+
+// const { start, stop } = useProgress();
+
+router.beforeEach((to, from, next: Function) => {
+    // start();
+    next();
+});
+
+router.afterEach((to, from) => {
+    preloading.value = false;
+    // stop();
+});
+
 </script>
 
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav>
-    </div>
-  </header>
-
-  <RouterView />
+    <router-view />
 </template>
 
-<style scoped>
-header {
-  line-height: 1.5;
-  max-height: 100vh;
+<style lang="css">
+#app {
+    height: 100%;
+    width: 100%;
 }
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
+.master-container {
+    min-height: 600px;
 }
 
-nav {
-  width: 100%;
-  font-size: 12px;
-  text-align: center;
-  margin-top: 2rem;
+.preloader-container {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    background-color: #f1f1f1;
+    z-index: 1001;
 }
 
-nav a.router-link-exact-active {
-  color: var(--color-text);
+.preloader {
+    width: 180px;
+    height: auto;
+    display: block;
+    margin: calc((100vh / 2) - (180px / 2)) auto;
 }
 
-nav a.router-link-exact-active:hover {
-  background-color: transparent;
+.preloader {
+    animation: waveIconPulse 1.83s .4s infinite;
+    animation-duration: 1.83s;
+    animation-timing-function: ease;
+    animation-delay: 0.4s;
+    animation-iteration-count: infinite;
+    animation-direction: normal;
+    animation-fill-mode: none;
+    animation-play-state: running;
+    animation-name: waveIconPulse;
 }
 
-nav a {
-  display: inline-block;
-  padding: 0 1rem;
-  border-left: 1px solid var(--color-border);
-}
+@keyframes waveIconPulse {
+    0% {
+        transform: scaleX(1);
+    }
 
-nav a:first-of-type {
-  border: 0;
-}
+    30% {
+        transform: scale3d(1.1, 1.1, 1.1);
+    }
 
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
+    60% {
+        transform: scale3d(1.1, 1.1, 1.1);
+    }
 
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-
-  nav {
-    text-align: left;
-    margin-left: -1rem;
-    font-size: 1rem;
-
-    padding: 1rem 0;
-    margin-top: 1rem;
-  }
+    100% {
+        transform: scaleX(1);
+    }
 }
 </style>

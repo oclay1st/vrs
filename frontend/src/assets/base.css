@@ -1,86 +1,286 @@
-/* color palette from <https://github.com/vuejs/theme> */
-:root {
-  --vt-c-white: #ffffff;
-  --vt-c-white-soft: #f8f8f8;
-  --vt-c-white-mute: #f2f2f2;
-
-  --vt-c-black: #181818;
-  --vt-c-black-soft: #222222;
-  --vt-c-black-mute: #282828;
-
-  --vt-c-indigo: #2c3e50;
-
-  --vt-c-divider-light-1: rgba(60, 60, 60, 0.29);
-  --vt-c-divider-light-2: rgba(60, 60, 60, 0.12);
-  --vt-c-divider-dark-1: rgba(84, 84, 84, 0.65);
-  --vt-c-divider-dark-2: rgba(84, 84, 84, 0.48);
-
-  --vt-c-text-light-1: var(--vt-c-indigo);
-  --vt-c-text-light-2: rgba(60, 60, 60, 0.66);
-  --vt-c-text-dark-1: var(--vt-c-white);
-  --vt-c-text-dark-2: rgba(235, 235, 235, 0.64);
+body {
+  background: #edeff7;
+  color: #555;
+  font-size: 14px;
+  direction: ltr;
+  overflow-x: hidden;
+  margin: 0;
 }
 
-/* semantic color variables for this project */
-:root {
-  --color-background: var(--vt-c-white);
-  --color-background-soft: var(--vt-c-white-soft);
-  --color-background-mute: var(--vt-c-white-mute);
-
-  --color-border: var(--vt-c-divider-light-2);
-  --color-border-hover: var(--vt-c-divider-light-1);
-
-  --color-heading: var(--vt-c-text-light-1);
-  --color-text: var(--vt-c-text-light-1);
-
-  --section-gap: 160px;
+.container {
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --color-background: var(--vt-c-black);
-    --color-background-soft: var(--vt-c-black-soft);
-    --color-background-mute: var(--vt-c-black-mute);
+.mouse-hover:hover {
+  cursor: pointer;
+}
 
-    --color-border: var(--vt-c-divider-dark-2);
-    --color-border-hover: var(--vt-c-divider-dark-1);
+.white-box a {
+  color: #494E58;
+}
 
-    --color-heading: var(--vt-c-text-dark-1);
-    --color-text: var(--vt-c-text-dark-2);
+ul {
+  padding-inline-start: 0;
+}
+
+a:hover {
+  cursor: pointer;
+}
+
+li {
+  list-style: none;
+}
+
+.pull-center {
+  margin: 0 auto;
+}
+
+.pull-right {
+  float: right;
+}
+
+.pull-left {
+  float: left;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.flex-container {
+  display: flex;
+}
+
+.flex-side-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+@media (min-width: 768px) {
+  .container {
+    width: 750px;
   }
 }
 
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-  margin: 0;
-  font-weight: normal;
+@media (min-width: 992px) {
+  .container {
+    width: 970px;
+  }
 }
 
-body {
-  min-height: 100vh;
-  color: var(--color-text);
-  background: var(--color-background);
-  transition:
-    color 0.5s,
-    background-color 0.5s;
-  line-height: 1.6;
-  font-family:
-    Inter,
-    -apple-system,
-    BlinkMacSystemFont,
-    'Segoe UI',
-    Roboto,
-    Oxygen,
-    Ubuntu,
-    Cantarell,
-    'Fira Sans',
-    'Droid Sans',
-    'Helvetica Neue',
-    sans-serif;
-  font-size: 15px;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@media (min-width: 1200px) {
+  .container {
+    width: 1170px;
+  }
+}
+
+.align-center {
+  text-align: center;
+}
+
+
+.ant-layout {
+  background: #ffffff;
+}
+
+/** Antd table modifications **/
+
+.ant-table-row-expand-icon {
+  border-radius: 0 !important;
+}
+
+.ant-table-thead>tr>th {
+  padding: 10px 16px !important;
+  background: #ffffff !important;
+  text-transform: uppercase !important;
+  color: #B5B6CD !important;
+  font-weight: bold !important;
+}
+
+.ant-table-small .ant-table-thead>tr>th {
+  padding: 10px 8px !important;
+}
+
+
+
+.white-table-body .ant-table-small {
+  background: #ffff;
+  border: none;
+}
+
+.expanded {
+  width: 100%;
+}
+
+.ant-table-expanded-row .inner-body {
+  margin-left: 40px !important;
+}
+
+.ant-table-expanded-row .table-inner-body {
+  margin: -16px -16px -17px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.ant-table-expanded-row .table-inner-body tr>th,
+.ant-table-expanded-row .table-inner-body .ant-table {
+  background: inherit !important;
+}
+
+.table-medium-size .ant-table-thead>tr>th,
+.table-medium-size .ant-table-tbody>tr>td {
+  padding: 12px 12px;
+}
+
+.ant-form-vertical .form-label-color-dark .ant-form-item-label:after,
+.title-color-dark:after {
+  border-color: #fff transparent transparent;
+  border-style: solid;
+  border-width: 7px;
+  bottom: -14px;
+  box-sizing: border-box;
+  content: " ";
+  display: block;
+  left: 34px;
+  position: absolute;
+  z-index: 2;
+}
+
+.ant-layout-sider {
+  background: #122538 !important;
+}
+
+.ant-form-vertical .form-label-color-dark {
+  margin-bottom: 0;
+}
+
+.ant-form-vertical .form-label-color-dark .ant-form-item-label {
+  overflow: unset;
+}
+
+.ant-form-vertical .form-label-color-dark .ant-form-item-label label {
+  font-size: 15.5px;
+}
+
+.ant-form-vertical .form-label-color-dark .ant-form-item-label,
+.title-color-dark {
+  border-bottom: 1px solid #fff;
+  display: block;
+  margin-bottom: 15px !important;
+  padding: 5px 0;
+  position: relative;
+  color: #fff;
+  font-size: 15.5px;
+}
+
+.ant-form-vertical .form-label-color-dark .ant-form-item-label:after,
+.title-color-dark:after {
+  border-color: #fff transparent transparent;
+}
+
+.ant-form-vertical .form-label-color-dark .ant-form-item-label,
+.title-color-dark {
+  color: #494E58;
+  border-bottom: 1px solid #edecec;
+  line-height: 30px;
+}
+
+.ant-form-vertical .form-label-color-dark .ant-form-item-label:before,
+.title-color-dark:before {
+  border-color: #edecec transparent transparent;
+  border-style: solid;
+  border-width: 6px;
+  bottom: -14px;
+  box-sizing: border-box;
+  content: " ";
+  display: block;
+  left: 35px;
+  position: absolute;
+  z-index: 2;
+}
+
+.custom-inline-form .ant-row {
+  margin-bottom: 8px !important;
+}
+
+
+
+.header-title {
+  font-size: 20px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  color: #777777;
+  font-family: Viga, sans-serif;
+}
+
+.medium-title-header {
+  font-size: 17px;
+  color: #777777;
+  margin-bottom: 4px;
+  font-family: Viga, sans-serif;
+}
+
+.btn-search {
+  background: #E1F0FF;
+  border: none;
+  color: #3699FF;
+  text-shadow: none;
+  box-shadow: none;
+}
+
+
+.small-empty-table .ant-empty-normal {
+  margin: 2px 0 !important;
+}
+
+.small-empty-table .ant-empty-description {
+  margin-bottom: 0;
+}
+
+#position-table th {
+  padding: 8px 8px !important;
+  font-size: 12px;
+}
+
+.ant-modal-title {
+  font-size: 17px !important;
+  font-family: Viga, sans-serif;
+  color: #777777 !important;
+}
+
+.ant-modal-header {
+  margin-bottom: 15px !important;
+}
+
+.ant-badge-status-text {
+  font-weight: bold;
+  color: #777777;
+}
+
+
+svg text {
+  cursor: default;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+svg text::selection {
+  background: none;
+}
+
+.cursor-default {
+  cursor: default;
+}
+
+.cursor-crosshair {
+  cursor: crosshair;
+}
+
+.ant-upload-select-picture {
+  width: 100%;
 }
