@@ -1,3 +1,6 @@
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=oclay1st_vrs&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=oclay1st_vrs)
+[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=oclay1st_vrs&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=oclay1st_vrs)
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=oclay1st_WFDB&metric=coverage)](https://sonarcloud.io/summary/new_code?id=oclay1st_WFDB)
 # Vehicle Registration System (VRS)
 
 A system for managing vehicles in a workshop, supporting diesel, gasoline, and electric vehicles. It records general details about each vehicle along with additional attributes based on the vehicle type.
