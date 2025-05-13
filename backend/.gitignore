@@ -37,3 +37,5 @@ build/
 ### Evironment files ###
 .env
 .env.json
+
+application/

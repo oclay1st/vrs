@@ -39,6 +39,7 @@ cd vrs
 cd backend
 mvn clean package
 mvn spring-boot:run
+# the api doc get exposed via swagger: http(s)://<host>:<port>/swagger-ui/index.html
 ```
 
 4. Run the frontend application:
@@ -47,4 +48,4 @@ mvn spring-boot:run
 cd frontend
 npm install 
 npm run dev
-
+```
