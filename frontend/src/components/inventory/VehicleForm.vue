@@ -40,22 +40,26 @@ const vehicleForm = ref();
 
 defineExpose({ "vehicleForm": vehicleForm });
 
+const showDieselInfo = computed(() => props.vehicle.type == 'DIESEL');
+
+const showGasInfo = computed(() => props.vehicle.type == 'GASOLINE');
+
+const showElectricInfo = computed(() => props.vehicle.type == 'ELECTRIC');
+
+const showConvertibleInfo = computed(() => props.vehicle.convertible == true);
+
 const rules = {
     vin: [{ required: true, validator: required, trigger: 'blur' }] as RuleObject,
     licensePlate: [{ required: true, validator: required, trigger: 'blur' }] as RuleObject,
-    type: [{ required: true, validator: required, trigger: 'blur' }] as RuleObject
+    type: [{ required: true, validator: required, trigger: 'blur' }] as RuleObject,
+    dieselInjectionPumpType: [{ required: showDieselInfo, validator: required, trigger: 'blur' }] as RuleObject,
+    gasFuelTypes: [{ required: showGasInfo, validator: required, trigger: 'blur' }] as RuleObject,
+    batteryType: [{ required: showElectricInfo, validator: required, trigger: 'blur' }] as RuleObject,
+    batteryVoltage: [{ required: showElectricInfo, validator: required, trigger: 'blur' }] as RuleObject,
+    batteryAmperage: [{ required: showElectricInfo, validator: required, trigger: 'blur' }] as RuleObject,
+    convertibleLicensePlate: [{ required: showConvertibleInfo, validator: required, trigger: 'blur' }] as RuleObject,
+    convertibleGasFuelTypes: [{ required: showConvertibleInfo, validator: required, trigger: 'blur' }] as RuleObject,
 };
-
-const showDieselInfo = computed(() => props.vehicle.type === 'DIESEL');
-
-const showGasInfo = computed(() => props.vehicle.type === 'GASOLINE');
-
-const showElectricInfo = computed(() => props.vehicle.type === 'ELECTRIC');
-
-
-onMounted(() => {
-    console.log('hello')
-})
 
 </script>
 
@@ -79,7 +83,7 @@ onMounted(() => {
                 </a-select>
             </a-form-item>
             <a-form-item v-if="showDieselInfo" label="Injection Pump Type" class="form-label-color-dark"
-                name="injectionPumpType">
+                name="dieselInjectionPumpType">
                 <a-select v-model:value="props.vehicle.dieselInjectionPumpType" placeholder="Select the pump type"
                     label="children" showSearch>
                     <a-select-option v-for="pumpType in inventoryStore.dieselInjectionPumpTypes" :key="pumpType.value">
