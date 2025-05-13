@@ -16,3 +16,7 @@ create table if not exists vehicle (
     updated_at timestamp not null,
     constraint vehicle_user_id_fk foreign key (user_id) references "user" (id) on delete set null on update set null
 );
+
+
+-- create vehicle index
+create index vehicle_index on vehicle(license_plate, type, diesel_injection_pump_type, battery_type);

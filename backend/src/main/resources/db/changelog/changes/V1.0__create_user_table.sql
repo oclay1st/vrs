@@ -9,3 +9,6 @@ create table if not exists "user" (
     created_at timestamp not null,
     updated_at timestamp not null
 );
+
+-- create user index
+create index user_index on "user"(username, name, last_name);

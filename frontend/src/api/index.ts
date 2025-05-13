@@ -2,7 +2,7 @@ import axios from 'axios'
 import { getLocalStorageKey } from '@/config/lstorage';
 
 const axiosInstance = axios.create({
-    baseURL: import.meta.env.VITE_API_BASE_URL, // from .env files
+    baseURL: import.meta.env.VITE_API_BASE_URL ? import.meta.env.VITE_API_BASE_URL : 'http://localhost:8080', // from .env files
 })
 
 axiosInstance.defaults.headers.post['Access-Control-Allow-Origin'] = '*';

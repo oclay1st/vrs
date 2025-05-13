@@ -14,3 +14,6 @@ create table if not exists archived_vehicle (
     user_id bigint not null,
     constraint archived_vehicle_user_id_fk foreign key (user_id) references "user" (id) on delete set null on update set null
 );
+
+-- create archived_vehicle index
+create index archived_vehicle_index on archived_vehicle(license_plate, type, diesel_injection_pump_type, battery_type, registered_at, archived_at);
