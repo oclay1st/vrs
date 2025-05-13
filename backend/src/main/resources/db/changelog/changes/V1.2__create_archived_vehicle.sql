@@ -10,5 +10,7 @@ create table if not exists archived_vehicle (
     battery_voltage int,
     battery_amperage int,
     registered_at timestamp not null,
-    archived_at timestamp not null
+    archived_at timestamp not null,
+    user_id bigint not null,
+    constraint archived_vehicle_user_id_fk foreign key (user_id) references "user" (id) on delete set null on update set null
 );

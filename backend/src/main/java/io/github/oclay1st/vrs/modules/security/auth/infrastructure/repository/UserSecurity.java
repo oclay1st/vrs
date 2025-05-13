@@ -9,11 +9,14 @@ import java.util.Collection;
 
 public class UserSecurity implements UserDetails {
 
+    private final Long id;
+
     private final String username;
 
     private final String password;
 
-    public UserSecurity(String username, String password) {
+    public UserSecurity(Long id, String username, String password) {
+        this.id = id;
         this.username = username;
         this.password = password;
     }
@@ -33,6 +36,10 @@ public class UserSecurity implements UserDetails {
     @Override
     public String getUsername() {
         return username;
+    }
+
+    public Long getId() {
+        return id;
     }
 
     @Override

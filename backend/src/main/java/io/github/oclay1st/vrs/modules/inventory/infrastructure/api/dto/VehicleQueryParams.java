@@ -39,7 +39,7 @@ public class VehicleQueryParams {
     @Parameter(name = "size", schema = @Schema(defaultValue = "20"))
     private Integer pageSize = 20;
 
-    public VehicleCriteria toVehicleCriteria() {
+    public VehicleCriteria toVehicleCriteria(Long userId) {
         Long vinValue = Utils.parseLong(vin);
         VehicleType typeValue = VehicleType.parseValue(type, false);
         DieselInjectionPumpType pumpTypeValue = DieselInjectionPumpType.parseValue(dieselInjectionPumpType, false);
@@ -49,7 +49,7 @@ public class VehicleQueryParams {
         }
         BatteryType batteryTypeValue = BatteryType.parseValue(batteryType, false);
         return new VehicleCriteria(vinValue, licensePlate, typeValue, pumpTypeValue, gasFuelTypesValue,
-                batteryTypeValue, batteryVoltage, batteryAmperage);
+                batteryTypeValue, batteryVoltage, batteryAmperage, userId);
     }
 
     public PageCriteria toPageCriteria() {

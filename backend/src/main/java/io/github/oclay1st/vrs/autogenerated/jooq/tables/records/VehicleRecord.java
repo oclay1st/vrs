@@ -186,10 +186,25 @@ public class VehicleRecord extends UpdatableRecordImpl<VehicleRecord> {
     }
 
     /**
+     * Setter for <code>vehicle.user_id</code>.
+     */
+    public VehicleRecord setUserId(Long value) {
+        set(11, value);
+        return this;
+    }
+
+    /**
+     * Getter for <code>vehicle.user_id</code>.
+     */
+    public Long getUserId() {
+        return (Long) get(11);
+    }
+
+    /**
      * Setter for <code>vehicle.created_at</code>.
      */
     public VehicleRecord setCreatedAt(LocalDateTime value) {
-        set(11, value);
+        set(12, value);
         return this;
     }
 
@@ -197,14 +212,14 @@ public class VehicleRecord extends UpdatableRecordImpl<VehicleRecord> {
      * Getter for <code>vehicle.created_at</code>.
      */
     public LocalDateTime getCreatedAt() {
-        return (LocalDateTime) get(11);
+        return (LocalDateTime) get(12);
     }
 
     /**
      * Setter for <code>vehicle.updated_at</code>.
      */
     public VehicleRecord setUpdatedAt(LocalDateTime value) {
-        set(12, value);
+        set(13, value);
         return this;
     }
 
@@ -212,7 +227,7 @@ public class VehicleRecord extends UpdatableRecordImpl<VehicleRecord> {
      * Getter for <code>vehicle.updated_at</code>.
      */
     public LocalDateTime getUpdatedAt() {
-        return (LocalDateTime) get(12);
+        return (LocalDateTime) get(13);
     }
 
     // -------------------------------------------------------------------------
@@ -238,7 +253,7 @@ public class VehicleRecord extends UpdatableRecordImpl<VehicleRecord> {
     /**
      * Create a detached, initialised VehicleRecord
      */
-    public VehicleRecord(Long vin, String licensePlate, String type, String dieselInjectionPumpType, String gasFuelTypes, String batteryType, Integer batteryVoltage, Integer batteryAmperage, Boolean convertible, String convertibleLicensePlate, String convertibleGasFuelTypes, LocalDateTime createdAt, LocalDateTime updatedAt) {
+    public VehicleRecord(Long vin, String licensePlate, String type, String dieselInjectionPumpType, String gasFuelTypes, String batteryType, Integer batteryVoltage, Integer batteryAmperage, Boolean convertible, String convertibleLicensePlate, String convertibleGasFuelTypes, Long userId, LocalDateTime createdAt, LocalDateTime updatedAt) {
         super(Vehicle.VEHICLE);
 
         setVin(vin);
@@ -252,6 +267,7 @@ public class VehicleRecord extends UpdatableRecordImpl<VehicleRecord> {
         setConvertible(convertible);
         setConvertibleLicensePlate(convertibleLicensePlate);
         setConvertibleGasFuelTypes(convertibleGasFuelTypes);
+        setUserId(userId);
         setCreatedAt(createdAt);
         setUpdatedAt(updatedAt);
         resetChangedOnNotNull();

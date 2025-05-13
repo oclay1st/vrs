@@ -8,10 +8,10 @@ public record RegisterVehicleDTO(Long vin, String licensePlate, String type, Str
         List<String> gasFuelTypes, String batteryType, Integer batteryVoltage, Integer batteryAmperage,
         Boolean convertible, String convertibleLicensePlate, List<String> convertibleGasFuelTypes) {
 
-    public RegisterVehicleCommand toCommand() {
+    public RegisterVehicleCommand toCommand(Long userId) {
         return new RegisterVehicleCommand(vin, licensePlate, type, dieselInjectionPumpType, gasFuelTypes,
                 batteryType, batteryVoltage, batteryAmperage, convertible, convertibleLicensePlate,
-                convertibleGasFuelTypes);
+                convertibleGasFuelTypes, userId);
     }
 
 }

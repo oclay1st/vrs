@@ -20,7 +20,7 @@ public class JooQUserSecurityRepository implements UserSecurityRepository {
     public Optional<UserSecurity> findByUsername(String username) {
         return client.selectFrom(USER)
                 .where(USER.USERNAME.eq(username))
-                .fetchOptional(user -> new UserSecurity(user.getUsername(), user.getPassword()));
+                .fetchOptional(user -> new UserSecurity(user.getId(), user.getUsername(), user.getPassword()));
     }
 
 }

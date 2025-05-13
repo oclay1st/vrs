@@ -1,6 +1,7 @@
 package io.github.oclay1st.vrs.modules.inventory.infrastructure.api;
 
 import org.springdoc.core.annotations.ParameterObject;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -29,6 +30,7 @@ import io.github.oclay1st.vrs.modules.inventory.infrastructure.api.dto.GasFuelTy
 import io.github.oclay1st.vrs.modules.inventory.infrastructure.api.dto.RegisterVehicleDTO;
 import io.github.oclay1st.vrs.modules.inventory.infrastructure.api.dto.VehicleQueryParams;
 import io.github.oclay1st.vrs.modules.inventory.infrastructure.api.dto.VehicleTypeDTO;
+import io.github.oclay1st.vrs.modules.security.auth.infrastructure.repository.UserSecurity;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
@@ -46,14 +48,16 @@ public class InventoryController {
 
     @Operation(summary = "Register a new vehicle")
     @PostMapping(path = InventoryConstants.VEHICLES_PATH)
-    public void registerVehicle(@Valid @RequestBody RegisterVehicleDTO input) {
-        inventoryService.registerVehicle(input.toCommand());
+    public void registerVehicle(@Valid @RequestBody RegisterVehicleDTO input,
+            @AuthenticationPrincipal UserSecurity user) {
+        inventoryService.registerVehicle(input.toCommand(user.getId()));
     }
 
     @Operation(summary = "List all the vehicles")
     @GetMapping(path = InventoryConstants.VEHICLES_PATH)
-    public Page<VehicleView> findByCriteria(@ParameterObject VehicleQueryParams params) {
-        VehicleCriteria vehicleCriteria = params.toVehicleCriteria();
+    public Page<VehicleView> findByCriteria(@ParameterObject VehicleQueryParams params,
+            @AuthenticationPrincipal UserSecurity user) {
+        VehicleCriteria vehicleCriteria = params.toVehicleCriteria(user.getId());
         PageCriteria pageCriteria = params.toPageCriteria();
         return inventoryService.findByCriteria(vehicleCriteria, pageCriteria);
     }

@@ -9,7 +9,8 @@ import io.github.oclay1st.vrs.modules.inventory.domain.model.VehicleType;
 
 public record VehicleCriteria(Long vin, String licensePlate, VehicleType type,
         DieselInjectionPumpType dieselInjectionPumpType,
-        List<GasFuelType> gasFuelTypes, BatteryType batteryType, Integer batteryVoltage, Integer batteryAmperage) {
+        List<GasFuelType> gasFuelTypes, BatteryType batteryType, Integer batteryVoltage, Integer batteryAmperage,
+        Long userId) {
 
     public static Builder builder() {
         return new Builder();
@@ -32,6 +33,8 @@ public record VehicleCriteria(Long vin, String licensePlate, VehicleType type,
         private Integer batteryVoltage;
 
         private Integer batteryAmperage;
+
+        private Long userId;
 
         public Builder vin(Long vin) {
             this.vin = vin;
@@ -73,9 +76,14 @@ public record VehicleCriteria(Long vin, String licensePlate, VehicleType type,
             return this;
         }
 
+        public Builder userId(Long userId) {
+            this.userId = userId;
+            return this;
+        }
+
         public VehicleCriteria build() {
             return new VehicleCriteria(vin, licensePlate, type, dieselInjectionPumpType, gasFuelTypes, batteryType,
-                    batteryVoltage, batteryAmperage);
+                    batteryVoltage, batteryAmperage, userId);
         }
 
     }

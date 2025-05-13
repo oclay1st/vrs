@@ -37,9 +37,11 @@ public class RegisterVehicleCommand {
 
     private final LocalDateTime updatedAt;
 
+    private final Long userId;
+
     public RegisterVehicleCommand(Long vin, String licensePlate, String type, String dieselInjectionPumpType,
             List<String> gasFuelTypes, String batteryType, Integer batteryVoltage, Integer batteryAmperage,
-            Boolean convertible, String convertibleLicensePlate, List<String> convertibleGasFuelTypes) {
+            Boolean convertible, String convertibleLicensePlate, List<String> convertibleGasFuelTypes, Long userId) {
         this.vin = Objects.requireNonNull(vin);
         this.licensePlate = Objects.requireNonNull(licensePlate);
         this.type = VehicleType.parseValue(type, true);
@@ -58,6 +60,7 @@ public class RegisterVehicleCommand {
         this.convertibleGasFuelTypes = this.convertible != null && this.convertible == true
                 ? convertibleGasFuelTypes.stream().map(value -> GasFuelType.parseValue(value, true)).toList()
                 : null;
+        this.userId = userId;
         LocalDateTime currentTime = LocalDateTime.now();
         this.createdAt = currentTime;
         this.updatedAt = currentTime;
@@ -113,6 +116,10 @@ public class RegisterVehicleCommand {
 
     public List<GasFuelType> getConvertibleGasFuelTypes() {
         return convertibleGasFuelTypes;
+    }
+
+    public Long getUserId() {
+        return userId;
     }
 
 }

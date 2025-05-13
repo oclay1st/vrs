@@ -64,6 +64,7 @@ public class JooQInventoryRepository implements InventoryRepository {
                 vehicleRecord.setConvertibleGasFuelTypes(convertibleGasFuelTypes);
             }
         }
+        vehicleRecord.setUserId(command.getUserId());
         vehicleRecord.setCreatedAt(command.getCreatedAt());
         vehicleRecord.setUpdatedAt(command.getUpdatedAt());
         vehicleRecord.store();
@@ -117,6 +118,9 @@ public class JooQInventoryRepository implements InventoryRepository {
                 condition = condition.and(VEHICLE.BATTERY_TYPE.eq(criteria.batteryType().name()));
             }
         }
+        if (criteria.userId() != null) {
+            condition = condition.and(VEHICLE.USER_ID.eq(criteria.userId()));
+        }
         return condition;
     }
 
@@ -133,6 +137,7 @@ public class JooQInventoryRepository implements InventoryRepository {
         archivedVehicleRecord.setBatteryVoltage(vehicleRecord.getBatteryVoltage());
         archivedVehicleRecord.setBatteryAmperage(vehicleRecord.getBatteryAmperage());
         archivedVehicleRecord.setRegisteredAt(vehicleRecord.getCreatedAt());
+        archivedVehicleRecord.setUserId(vehicleRecord.getUserId());
         archivedVehicleRecord.setArchivedAt(LocalDateTime.now());
         archivedVehicleRecord.store();
         vehicleRecord.delete();

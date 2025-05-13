@@ -185,6 +185,21 @@ public class ArchivedVehicleRecord extends UpdatableRecordImpl<ArchivedVehicleRe
         return (LocalDateTime) get(10);
     }
 
+    /**
+     * Setter for <code>archived_vehicle.user_id</code>.
+     */
+    public ArchivedVehicleRecord setUserId(Long value) {
+        set(11, value);
+        return this;
+    }
+
+    /**
+     * Getter for <code>archived_vehicle.user_id</code>.
+     */
+    public Long getUserId() {
+        return (Long) get(11);
+    }
+
     // -------------------------------------------------------------------------
     // Primary key information
     // -------------------------------------------------------------------------
@@ -208,7 +223,7 @@ public class ArchivedVehicleRecord extends UpdatableRecordImpl<ArchivedVehicleRe
     /**
      * Create a detached, initialised ArchivedVehicleRecord
      */
-    public ArchivedVehicleRecord(Long id, Long vin, String licensePlate, String type, String dieselInjectionPumpType, String gasFuelTypes, String batteryType, Integer batteryVoltage, Integer batteryAmperage, LocalDateTime registeredAt, LocalDateTime archivedAt) {
+    public ArchivedVehicleRecord(Long id, Long vin, String licensePlate, String type, String dieselInjectionPumpType, String gasFuelTypes, String batteryType, Integer batteryVoltage, Integer batteryAmperage, LocalDateTime registeredAt, LocalDateTime archivedAt, Long userId) {
         super(ArchivedVehicle.ARCHIVED_VEHICLE);
 
         setId(id);
@@ -222,6 +237,7 @@ public class ArchivedVehicleRecord extends UpdatableRecordImpl<ArchivedVehicleRe
         setBatteryAmperage(batteryAmperage);
         setRegisteredAt(registeredAt);
         setArchivedAt(archivedAt);
+        setUserId(userId);
         resetChangedOnNotNull();
     }
 }
